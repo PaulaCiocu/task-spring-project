@@ -14,17 +14,8 @@ import java.util.List;
 @Repository
 public interface TaskJpaRepository extends JpaRepository<Task, Long> {
 
-    @Query("SELECT new com.example.spring_project_work.dto.TaskDTO(" +
-            "t.title, t.status, t.description, t.estimatedDuration, t.remainingHours, t.completedHours) " +
-            "FROM Task t WHERE t.status = :status")
-    List<TaskDTO> findByState(@Param("status") String status);
-
-
-    @Query("SELECT new com.example.spring_project_work.dto.TaskDTO(" +
-            "t.title, t.status, t.description, t.estimatedDuration, t.remainingHours, t.completedHours) " +
-            "FROM Task t")
-    List<TaskDTO>  findAllTaskDTOs();
-
+    @Query("select t from Task t where t.status = :status")
+    List<Task> findByState(@Param("status") String status);
 
     @Query("SELECT t FROM Task t WHERE t.owner.id = :ownerId")
     List<Task> findTasksByOwnerId(@Param("ownerId") Long ownerId);

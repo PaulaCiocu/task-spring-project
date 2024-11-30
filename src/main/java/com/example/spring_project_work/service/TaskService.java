@@ -27,8 +27,8 @@ public class TaskService {
         this.ownerJpaRepository = ownerJpaRepository;
     }
 
-    public List<TaskDTO> listAllTasks() {
-        return taskJpaRepository.findAllTaskDTOs();
+    public List<Task> listAllTasks() {
+        return taskJpaRepository.findAll();
     }
 
     public ResponseEntity<Task> createTask(Task task) {
@@ -118,7 +118,7 @@ public class TaskService {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    public List<TaskDTO> getAllTasksByState(String state) {
+    public List<Task> getAllTasksByState(String state) {
         return taskJpaRepository.findByState(state);
     }
 }

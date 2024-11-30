@@ -19,7 +19,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<TaskDTO> getTasks() {
+    public List<Task> getTasks() {
         return taskService.listAllTasks();
     }
 
@@ -29,7 +29,7 @@ public class TaskController {
     }
 
     @GetMapping("/state/{state}")
-    public List<TaskDTO> getAllTasksByState(@PathVariable String state) {
+    public List<Task> getAllTasksByState(@PathVariable String state) {
         return taskService.getAllTasksByState(state);
     }
 
